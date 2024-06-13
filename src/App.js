@@ -86,7 +86,7 @@ export default function Example() {
 
   useEffect(() => {
     setTimeout(() => {
-      // getPins().then(setPins);
+      getPins().then(setPins);
     }, 1000);
   }, []);
 

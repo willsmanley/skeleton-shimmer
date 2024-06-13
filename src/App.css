@@ -7,15 +7,32 @@
             overflow: hidden; /* Prevents scrollbars during animation */
           }
 
-          
           .skeleton {
+            display: flex;
+            flex-direction: column;
             position: relative;
             overflow: hidden;
+          }
+
+          *:first-child > .skeleton::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0),
+              rgba(255, 255, 255, 0.3),
+              rgba(255, 255, 255, 0)
+            );
+            animation: shimmer 2s infinite linear;
           }
           
           .skeleton::before {
             content: '';
-            position: absolute;
+            position: static;
             top: 0;
             left: 0;
             width: 200%;

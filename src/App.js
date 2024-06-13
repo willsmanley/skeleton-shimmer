@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, Flex, Image, Masonry, Text } from 'gestalt';
+import { Box, Flex, Image, Masonry } from 'gestalt';
 
 // Generate skeleton pins
 const skeletonPins = [...new Array(3)].map(() => [
@@ -72,9 +72,9 @@ function GridComponent({ data }) {
 // Component to display a skeleton pin
 function SkeletonPin({ height, width }) {
   return (
-    <Flex direction="column" className="skeleton">
-      <Box width={width} height={height} color="lightGray" />
-    </Flex>
+    <div style={{ background: 'lightGray' }} className="skeleton">
+    <Box width={width} height={height} color="lightGray" />
+  </div>
   );
 }
 
@@ -86,7 +86,7 @@ export default function Example() {
 
   useEffect(() => {
     setTimeout(() => {
-      getPins().then(setPins);
+      // getPins().then(setPins);
     }, 1000);
   }, []);
 

@@ -71,10 +71,38 @@ function GridComponent({ data }) {
 
 // Component to display a skeleton pin
 function SkeletonPin({ height, width }) {
+  const skeletonRef = useRef();
+  const [delay, setDelay] = useState(0);
+
+  useEffect(() => {
+    const calculateDelay = () => {
+      if (skeletonRef.current) {
+        const rect = skeletonRef.current.getBoundingClientRect();
+        const delayInSeconds = (rect.left + rect.top) / 100;
+        setDelay(delayInSeconds);
+      }
+    };
+
+    calculateDelay();
+    window.addEventListener('resize', calculateDelay);
+
+    return () => {
+      window.removeEventListener('resize', calculateDelay);
+    };
+  }, []);
+
   return (
-    <div style={{ background: 'lightGray' }} className="skeleton">
-    <Box width={width} height={height} color="lightGray" />
-  </div>
+    <div
+      ref={skeletonRef}
+      style={{
+        animationDelay: `${delay}s`,
+        animationDuration: `${width / 100}s`,
+      }}
+      id="skeleton"
+      className="skeleton"
+    >
+      <Box width={width} height={height} color="lightGray" />
+    </div>
   );
 }
 
@@ -86,7 +114,7 @@ export default function Example() {
 
   useEffect(() => {
     setTimeout(() => {
-      getPins().then(setPins);
+      // getPins().then(setPins);
     }, 1000);
   }, []);
 

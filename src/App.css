@@ -1,74 +1,41 @@
 @import "gestalt/dist/gestalt.css";
-          * { margin: 0; padding: 0;}
-          body, html, #root { height: 100%; }
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html,
+#root {
+  height: 100%;
+}
 
+body {
+  overflow: hidden; /* Prevents scrollbars during animation */
+}
 
-          body {
-            overflow: hidden; /* Prevents scrollbars during animation */
-          }
-/* 
-          .skeleton {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-          }
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: lightgrey;
+  background: linear-gradient(
+    to right,
+    lightgrey 45%, 
+    #f5f5f5 50%,
+    lightgrey 55%
+  );
+  content: "";
+  animation: shimmer 1.5s infinite linear;
+  background-size: 200vw 100%;
+  background-attachment: fixed;
+  width: 100%;
+}
 
-          .shimmer {
-            content: "";
-            position: static;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 300px;
-            background: linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0),
-              rgba(255, 255, 255, 0.3),
-              rgba(255, 255, 255, 0)
-            );
-            animation: shimmer 2s infinite linear;
-          }
-          
-          @keyframes shimmer {
-            0% {
-              transform: translateX(-100%);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          
-           */
-
-           @keyframes shimmer {
-            0% {
-              background-position: -150% 0;
-            }
-            100% {
-              background-position: 150% 0;
-            }
-          }
-          
-          .skeleton {
-            background: linear-gradient(
-              to right,
-              lightGray 25%,
-              #e0e0e0 50%,
-              lightGray 75%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 1.5s linear infinite;
-          }
-
-          #skeleton {
-            background: linear-gradient(
-              to right,
-              green 25%,
-              #e0e0e0 50%,
-              green 75%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 1.5s linear infinite;
-          }
-          
+@keyframes shimmer {
+  0% {
+    background-position: -100vw 0;
+  }
+  100% {
+    background-position: 100vw 0;
+  }
+}
